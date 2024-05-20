@@ -2,10 +2,22 @@ import React, { useState } from 'react';
 
 const App = () => {
   const [exemploGerado, setExemploGerado] = useState(false);
+  const [itensExemplo, setItensExemplo] = useState([]);
 
   const gerarExemplo = () => {
-    // Aqui você pode adicionar a lógica para gerar o exemplo
-    // Por enquanto, vamos apenas definir a flag de exemplo gerado como verdadeira
+    // Lista de itens de exemplo
+    const listaItens = [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+      'Item 5',
+    ];
+    // Embaralhando a lista de itens aleatoriamente
+    const itensAleatorios = listaItens.sort(() => Math.random() - 0.5);
+    // Definindo os itens de exemplo
+    setItensExemplo(itensAleatorios);
+    // Definindo a flag de exemplo gerado como verdadeira
     setExemploGerado(true);
   };
 
@@ -28,7 +40,11 @@ const App = () => {
         {exemploGerado && (
           <div className="bg-green-200 p-4 rounded shadow">
             <h3 className="text-lg mb-2">Exemplo Gerado</h3>
-            <p>Este é um exemplo gerado a partir do botão.</p>
+            <ul>
+              {itensExemplo.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           </div>
         )}
       </main>
