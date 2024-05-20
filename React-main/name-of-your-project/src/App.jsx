@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const App = () => {
+  const [exemploGerado, setExemploGerado] = useState(false);
+
+  const gerarExemplo = () => {
+    // Aqui você pode adicionar a lógica para gerar o exemplo
+    // Por enquanto, vamos apenas definir a flag de exemplo gerado como verdadeira
+    setExemploGerado(true);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-blue-600 text-white p-4">
@@ -11,13 +19,18 @@ const App = () => {
         <p className="mb-4">
           Este é um exemplo de site utilizando Tailwind CSS. Veja alguns exemplos de componentes abaixo.
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
-          Botão Exemplo
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+          onClick={gerarExemplo}
+        >
+          Gerar Exemplo
         </button>
-        <div className="bg-white p-4 rounded shadow">
-          <h3 className="text-lg mb-2">Cartão de Exemplo</h3>
-          <p>Este é um cartão estilizado com Tailwind CSS.</p>
-        </div>
+        {exemploGerado && (
+          <div className="bg-green-200 p-4 rounded shadow">
+            <h3 className="text-lg mb-2">Exemplo Gerado</h3>
+            <p>Este é um exemplo gerado a partir do botão.</p>
+          </div>
+        )}
       </main>
       <footer className="bg-gray-800 text-white p-4 mt-4">
         <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
